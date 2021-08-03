@@ -7,4 +7,4 @@ hint: 0	1144	Used RAM (bytes): 2 (4%)  Free RAM (bytes): 46 (96%)	Used RAM (byte
 hint: 0	1144	Used ROM (program words): 17 (2%)  Free ROM (program words): 1007 (98%)	Used ROM (program words): 17 (2%)  Free ROM (program words): 1007 (98%)
 diagnostics: 0	125	Project Linked Successfully	EEPROM_PIC12F675.mcppi
 error: 0	304	COFF file generation failed	COFF file generation failed
-error: 0	102	Finished (with errors): 03 ago 2021, 17:45:22	EEPROM_PIC12F675.mcppi
+error: 0	102	Finished (with errors): 03 ago 2021, 18:04:32	EEPROM_PIC12F675.mcppi

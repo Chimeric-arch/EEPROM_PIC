@@ -1,4 +1,8 @@
- // Protótipo de funções
+#ifndef EEPROM_H
+#define EEPROM_H
+#endif
+
+// Protótipo de funções
 char EEPROM_write(char dat, unsigned char addr);                                // Função de escrita na memória EEPROM
 char EEPROM_read(unsigned char addr);                                           // Função de leitura da memória EEPROM
 

@@ -1,6 +1,10 @@
 #line 1 "D:/danie/Documentos/Proteus     Arduino/MikroC PRO for PIC/Sketchs PICs/EEPROM/EEPROM_PIC12F675.c"
 #line 1 "d:/danie/documentos/proteus     arduino/mikroc pro for pic/sketchs pics/eeprom/eeprom.h"
 
+
+
+
+
 char EEPROM_write(char dat, unsigned char addr);
 char EEPROM_read(unsigned char addr);
 
