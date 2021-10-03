@@ -1,36 +1,35 @@
 #ifndef EEPROM_H
 #define EEPROM_H
-#endif
 
-// ProtÛtipo de funÁıes
-char EEPROM_write(char dat, unsigned char addr);                                // FunÁ„o de escrita na memÛria EEPROM
-char EEPROM_read(unsigned char addr);                                           // FunÁ„o de leitura da memÛria EEPROM
+// Prot√≥tipo de fun√ß√µes
+char EEPROM_write(char dat, unsigned char addr);                                // Fun√ß√£o de escrita na mem√≥ria EEPROM
+char EEPROM_read(unsigned char addr);                                           // Fun√ß√£o de leitura da mem√≥ria EEPROM
 
 
 // Desenvolvimento EEPROM_write()
 char EEPROM_write(char dat, unsigned char addr)
 {
   EECON1.WREN = 0x01;                                                           // Habilita ciclo de escrita
-  INTCON.GIE  = 0x00;                                                           // Desabilita temporariamente interrupÁ„o por perifÈricos
-  EEADR       = addr > 0x7F ? addr = 0x7F : addr;                               // Carrega registro com endereÁo da memÛria
+  INTCON.GIE  = 0x00;                                                           // Desabilita temporariamente interrup√ß√£o por perif√©ricos
+  EEADR       = addr > 0x7F ? addr = 0x7F : addr;                               // Carrega registro com endere√ßo da mem√≥ria
   EEDAT       =  dat;                                                           // Carrega registro com os dados a serem escritos
-  EECON2      = 0x55;                                                           // SequÍncia determinada pelo datasheet
-  EECON2      = 0xAA;                                                           // SequÍncia determinada pelo datasheet
+  EECON2      = 0x55;                                                           // Sequ√™ncia determinada pelo datasheet
+  EECON2      = 0xAA;                                                           // Sequ√™ncia determinada pelo datasheet
   EECON1.WR   = 0x01;                                                           // Inicia ciclo de escrita
-  while (EECON1.WR)                                                             // Espera tÈrmino do ciclo de escrita
+  while (EECON1.WR)                                                             // Espera t√©rmino do ciclo de escrita
 
-  if (EECON1.WRERR)                                                             // Se operaÁ„o incompleta
+  if (EECON1.WRERR)                                                             // Se opera√ß√£o incompleta
   {
     EECON1.WREN = 0x00;                                                         // Desabilita cliclo de escrita
-    INTCON.GIE  = 0x01;                                                         // Reabilita interrupÁ„o por perifÈricos
-    return 0x01;                                                                // OperaÁ„o de escrita foi encerrada prematuramente
+    INTCON.GIE  = 0x01;                                                         // Reabilita interrup√ß√£o por perif√©ricos
+    return 0x01;                                                                // Opera√ß√£o de escrita foi encerrada prematuramente
   }
 
-  else                                                                          // Se operaÁ„o completa
+  else                                                                          // Se opera√ß√£o completa
   {
     EECON1.WREN = 0x00;                                                         // Desabilita cliclo de escrita
-    INTCON.GIE  = 0x01;                                                         // Reabilita interrupÁ„o por perifÈricos
-    return 0x00;                                                                // OperaÁ„o de escrita foi encerrada com sucesso
+    INTCON.GIE  = 0x01;                                                         // Reabilita interrup√ß√£o por perif√©ricos
+    return 0x00;                                                                // Opera√ß√£o de escrita foi encerrada com sucesso
   }
 }
 
@@ -38,7 +37,9 @@ char EEPROM_write(char dat, unsigned char addr)
 // Desenvolvimento EEPROM_read()
 char EEPROM_read(unsigned char addr)
 {
-  EEADR     = addr > 0x7F ? addr = 0x7F : addr;                                 // Carrega registro com endereÁo da memÛria
+  EEADR     = addr > 0x7F ? addr = 0x7F : addr;                                 // Carrega registro com endere√ßo da mem√≥ria
   EECON1.RD = 0x01;                                                             // Inicia ciclo de leitura
   return EEDAT;                                                                 // Retorna byte de leitura
 }
+
+#endif
